@@ -4,11 +4,9 @@ const _  = require('lodash')
 const fs = require('fs')
 
 function calc(loc) {
-    var sqrt = Math.sqrt(loc)
-    var corner = loc
-    while (!_.isInteger(sqrt) || !(sqrt % 2)) {
-        sqrt = Math.sqrt(++corner)
-    }
+    var sqrt = _.ceil(Math.sqrt(loc))
+    if (sqrt % 2 === 0) ++sqrt
+    var corner = Math.pow(sqrt, 2)
     var width = sqrt
     var worst = width - 1
     var best = worst / 2
@@ -32,7 +30,7 @@ function calc(loc) {
 │ width  : ${ width }
 │ worst  : ${ worst }
 │ best   : ${ best }
-└ steps  : ${ steps }
+└ = steps: ${ steps }
 `)
 }
 
