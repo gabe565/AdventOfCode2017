@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
 const _ = require('lodash')
+const fs = require('fs')
 
 const debug = process.argv[2]
 
@@ -27,7 +27,6 @@ function calc(input) {
 
 if (debug) {
     calc('test.csv')
-    // calc([[5,1,9,5]
 } else {
     calc('../input.csv')
 }

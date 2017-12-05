@@ -36,7 +36,6 @@ function calc(input) {
 
 if (debug) {
     calc('test.csv')
-    // calc([[5,1,9,5]
 } else {
     calc('../input.csv')
 }
