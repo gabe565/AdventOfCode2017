@@ -8,20 +8,11 @@ function calc(input) {
     var arr = _.toArray(input)
     var size = _.size(arr)
     var half = size / 2
-    var result = []
-
-    result = _.filter(arr, (val, key) => {
-        // Setting next value
-        var next = {}
-        next.key = (key + half) % size
-        next.val = arr[next.key]
-
-        // if (debug) console.log(key + ': ' + val + ' compared to ' + next.key + ': ' + next.val)
-
-        return val === next.val
+    var result = _.filter(arr, (val, key) => {
+        var next = arr[(key + half) % size]
+        return val === next
     })
     console.log(input + ' = ' + _.sum(_.map(result, _.toInteger)))
-    // if (debug) console.log('\tResulting Array: ' + result)
 }
 
 if (debug) {
