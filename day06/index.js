@@ -4,7 +4,7 @@
 const fs = require('fs')
 
 function calc(input) {
-    let memory  = input.split(/\s+/).map(Number)
+    let memory  = input.replace(/\r?\n$/, '').split(/\s+/).map(Number)
     console.log(memory.toString())
     let history = new Map()
     let size = memory.length
@@ -32,4 +32,4 @@ console.log('Tests')
 calc('0 2 7 0')
 console.log('\nInput')
 var data = fs.readFileSync('input.txt', 'utf8')
-calc(data.replace(/\r?\n$/, ''))
+calc(data)
