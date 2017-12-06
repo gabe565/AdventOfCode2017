@@ -1,19 +1,18 @@
 #!/usr/bin/env node
 'use strict'
 
-const _ = require('lodash')
 const fs = require('fs')
 
-const filename = '../input.txt'
+const filename = __dirname + '/../input.txt'
 const data = fs.readFileSync(filename, 'utf8')
 
-var passphrases = _.filter(_.split(data, /\r?\n/), _.size)
+var passphrases = data.replace(/\r?\n$/, '').split(/\r?\n/)
 
-var correct = _.filter(passphrases, (val) => {
-    var words = _.split(val, /\s+/)
-    var correct = _.uniq(words)
-    return _.isEqual(words, correct)
+var correct = passphrases.filter((val) => {
+    var words = val.split(/\s+/)
+    var correct = words.filter((el, i, self) => i === self.indexOf(el))
+    return words.toString() == correct.toString()
 })
 
-console.log('Entries: ' + _.size(passphrases))
-console.log('Correct: ' + _.size(correct))
+console.log('Entries: ' + passphrases.length)
+console.log('Correct: ' + correct.length)

@@ -1,19 +1,16 @@
 #!/usr/bin/env node
 'use strict'
 
-var debug = process.argv[2]
-
-const _ = require('lodash')
+let debug = process.argv[2]
 
 function calc(input) {
-    var arr = _.toArray(input)
-    var size = _.size(arr)
-    var half = size / 2
-    var result = _.filter(arr, (val, key) => {
-        var next = arr[(key + half) % size]
+    let arr = input.split('')
+    let half = arr.length / 2
+    let result = arr.filter((val, key) => {
+        let next = arr[(key + half) % arr.length]
         return val === next
     })
-    console.log(input + ' = ' + _.sum(_.map(result, _.toInteger)))
+    console.log(input + ' = ' + result.map(Number).reduce((ac, curr) => ac + curr))
 }
 
 if (debug) {

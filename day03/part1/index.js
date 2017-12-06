@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 'use strict'
 
-const _  = require('lodash')
 const fs = require('fs')
 
 function calc(loc) {
-    var sqrt = _.ceil(Math.sqrt(loc))
+    var sqrt = Math.ceil(Math.sqrt(loc))
     if (sqrt % 2 === 0) ++sqrt
     var corner = Math.pow(sqrt, 2)
     var width = sqrt

@@ -3,6 +3,8 @@
 
 const fs = require('fs')
 
+const filepath = __dirname + '/input.txt'
+
 function calc(input) {
     let memory  = input.replace(/\r?\n$/, '').split(/\s+/).map(Number)
     console.log(memory.toString())
@@ -31,5 +33,5 @@ function calc(input) {
 console.log('Tests')
 calc('0 2 7 0')
 console.log('\nInput')
-var data = fs.readFileSync('input.txt', 'utf8')
+var data = fs.readFileSync(filepath, 'utf8')
 calc(data)

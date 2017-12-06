@@ -2,28 +2,24 @@
 'use strict'
 
 const fs = require('fs')
-const _ = require('lodash')
 
 const debug = process.argv[2]
 
 function toArray(input) {
-    var data = fs.readFileSync(input, 'utf8')
-    var arr = _.filter(_.split(data, /\r?\n/), _.size)
-    var result = _.map(arr, (val) => {
-        var split = _.split(val, /\s+/)
-        return _.map(split, _.toInteger)
-    })
+    let data = fs.readFileSync(input, 'utf8')
+    let arr = data.replace(/\r?\n$/, '').split(/\r?\n/)
+    let result = arr.map(line => line.split(/\s+/).map(Number))
     return result
 }
 
 function calc(input) {
-    var data = toArray(input)
-    var result = _.map(data, (row) => {
-        var sorted = _.sortBy(row)
-        var begin = 0
-        var end = sorted.length - 1
-        var curr
-        while (!_.isInteger(curr) && end > 0) {
+    let data = toArray(input)
+    let result = data.map(row => {
+        let sorted = row.sort((a, b) => a - b)
+        let begin = 0
+        let end = sorted.length - 1
+        let curr
+        while (!Number.isInteger(curr) && end > 0) {
             curr = sorted[end] / sorted[begin]
             if (++begin >= end) {
                 begin = 0
@@ -32,11 +28,11 @@ function calc(input) {
         }
         return curr
     })
-    console.log(_.sum(result))
+    console.log(result.reduce((ac, curr) => ac + curr))
 }
 
 if (debug) {
-    calc('test.csv')
+    calc(__dirname + '/test.csv')
 } else {
-    calc('../input.csv')
+    calc(__dirname + '/../input.csv')
 }
