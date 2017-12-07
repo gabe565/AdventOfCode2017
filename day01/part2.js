@@ -1,0 +1,12 @@
+'use strict'
+
+module.exports = function(input) {
+    let arr = input.split('').map(Number)
+    let half = arr.length / 2
+    let result = arr.filter((val, key) => {
+        let next = arr[(key + half) % arr.length]
+        return val === next
+    })
+    let sum = result.reduce((t, n) => t + n, 0)
+    return sum
+}

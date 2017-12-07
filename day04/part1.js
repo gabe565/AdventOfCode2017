@@ -1,7 +1,4 @@
-#!/usr/bin/env node
 'use strict'
-
-const fs = require('fs')
 
 const filename = __dirname + '/../input.txt'
 const data = fs.readFileSync(filename, 'utf8')
