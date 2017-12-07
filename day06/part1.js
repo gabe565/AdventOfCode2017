@@ -1,13 +1,7 @@
-#!/usr/bin/env node
 'use strict'
 
-const fs = require('fs')
-
-const filepath = __dirname + '/input.txt'
-
-function calc(input) {
+module.exports = function(input) {
     let memory  = input.replace(/\r?\n$/, '').split(/\s+/).map(Number)
-    console.log(memory.toString())
     let history = new Map()
     let size = memory.length
     let pc = 0
@@ -25,13 +19,6 @@ function calc(input) {
         }
         ++pc
     }
-    let first = history.get(memory.toString())
-    console.log('Count : ' + pc)
-    console.log('Cycles: ' + (pc - first))
+    
+    return pc
 }
-
-console.log('Tests')
-calc('0 2 7 0')
-console.log('\nInput')
-var data = fs.readFileSync(filepath, 'utf8')
-calc(data)

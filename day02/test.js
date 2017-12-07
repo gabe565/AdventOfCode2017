@@ -12,7 +12,7 @@ function doTest(fn, input, result) {
     })
 }
 
-describe('Day 1: Inverse Captcha', () => {
+describe('Day 2: Corruption Checksum', () => {
     describe('Part 1', () => {
         doTest(part1, read('part1.csv'), 18)
     })

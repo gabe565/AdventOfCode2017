@@ -3,7 +3,7 @@
 const assert = require('assert')
 
 const part1 = require('./part1')
-//const part2 = require('./part2')
+const part2 = require('./part2')
 
 function doTest(fn, input, result) {
     it(input + ' should be ' + result, () => {
@@ -11,12 +11,11 @@ function doTest(fn, input, result) {
     })
 }
 
-describe('Day 3: Spiral Memory', () => {
+describe('Day 5: A Maze of Twisty Trampolines, All Alike', () => {
     describe('Part 1', () => {
-        doTest(part1, 1, 0)
-        doTest(part1, 6, 1)
-        doTest(part1, 12, 3)
-        doTest(part1, 23, 2)
-        doTest(part1, 1024, 31)
+        doTest(part1, [0, 3, 0, 1, -3], 5)
+    })
+    describe('Part 2', () => {
+        doTest(part2, [0, 3, 0, 1, -3], 10)
     })
 })

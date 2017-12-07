@@ -12,20 +12,15 @@ function doTest(fn, input, result) {
     })
 }
 
-describe('Day 1: Inverse Captcha', () => {
+describe('Day 7: Recursive Circus', () => {
     describe('Part 1', () => {
-        it('test data should be ' + 'tknk', () => {
-            assert.equal('tknk', part1(read('input.txt')))
+        it('test data should be tknk', () => {
+            assert.equal('tknk', part1(read('test.txt')))
         })
     })
     describe('Part 2', () => {
-        it('test data should be ' + 'tknk', () => {
-            assert.equal('tknk', part2(read('input.txt')))
+        it('fixed weight should be 60', () => {
+            assert.equal(60, part2(read('test.txt')))
         })
-        // doTest(part2, '1212', 6)
-        // doTest(part2, '1221', 0)
-        // doTest(part2, '123425', 4)
-        // doTest(part2, '123123', 12)
-        // doTest(part2, '12131415', 4)
     })
 })

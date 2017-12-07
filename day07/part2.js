@@ -7,55 +7,74 @@ let uneven
 function calcWeight(node) {
     let weight = 0
     let weights = []
-    if (node.nodes) {
-        node.nodes.forEach(e => {
+    if (node.children) {
+        node.children.forEach(e => {
             weight += calcWeight(e)
-            weights.push(e.weight)
+            weights.push(e.weight.single)
         })
     }
-    weight += parseInt(node.weight)
-    node.combined = weight
-    if (_.uniq(weights).length !== 1) {
-        uneven = node
-    }
+    weight += node.weight.single
+    node.weight.combined = weight
+    // if (_.uniq(weights).length !== 1) {
+    //     uneven = node
+    // }
     return weight
 }
 
+function getRegular([x, y, z]) {
+    if (x.weight.combined == y.weight.combined)
+        return x.weight.combined
+    else
+        return z.weight.combined
+}
+
+function fixUnbalanced(node) {
+    if (node.children) {
+        let regular = getRegular(node.children)
+        let different = node.children.findIndex(e => e.weight.combined !== regular)
+        if (different === -1) {
+            return null
+        } else {
+            let next = fixUnbalanced(node.children[different])
+            if (next !== null)
+                return next
+            else {
+                let difference = Math.abs(regular - node.children[different].weight.combined)
+                let fixed = Math.abs(node.children[different].weight.single - difference)
+                return fixed
+            }
+        }
+    } else {
+        return null
+    }
+}
+
 module.exports = function(data) {
-    let extract = []
-    let result = []
-    data.forEach(e => {
+    let extract = data.map(e => {
         let [, name, weight, children] = e.match(/^(.+?) \((\d+?)\)(?: \-> (.*))?$/)
         if (children) children = children.split(', ')
         else children = null
-        extract.push({
+        return {
             name: name,
-            weight: weight,
+            weight: {
+                single: parseInt(weight),
+            },
             children: children
-        })
+        }
     })
     let root = null
     extract.forEach(e => {
         let found = _.find(extract, { children: [e.name] })
         if (found) {
-            if (!found.nodes)
-                found.nodes = []
-            found.nodes.push(e)
+            let i = _.indexOf(found.children, e.name)
+            found.children[i] = e
         }
     })
     extract.forEach(e => {
-        delete e.children
-        if (!_.find(extract, { nodes: [e] })) {
+        if (!_.find(extract, { children: [e] })) {
             root = e
         }
     })
     calcWeight(root)
-    console.log(JSON.stringify(root, null, 2))
-    // let weights = []
-    // root.nodes.forEach(e => {
-    //     weights.push({ name: e.name, weight: calcWeight(e)})
-    // })
-    //console.log(JSON.stringify(weights, null, 4))
-    console.log(uneven)
-    return root.name
+    return fixUnbalanced(root)
 }
