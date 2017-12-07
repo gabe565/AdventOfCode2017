@@ -14,7 +14,7 @@ function doTest(fn, input, result) {
 
 describe('Day 7: Recursive Circus', () => {
     describe('Part 1', () => {
-        it('test data should be tknk', () => {
+        it('bottom of the tower should be "tknk"', () => {
             assert.equal('tknk', part1(read('test.txt')))
         })
     })

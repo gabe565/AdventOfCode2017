@@ -7,7 +7,7 @@ const part1 = require('./part1')
 const part2 = require('./part2')
 
 function doTest(fn, input, result) {
-    it(input + ' should be ' + result, () => {
+    it('checksum of [[' + input.join('],[') + ']] should be ' + result, () => {
         assert.equal(result, fn(input))
     })
 }
