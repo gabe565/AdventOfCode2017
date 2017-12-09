@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function(input) {
+module.exports = input => {
     let arr = input.split('').map(Number)
     let result = arr.filter((val, key) => {
         let next = arr[(key + 1) % arr.length]

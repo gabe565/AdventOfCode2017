@@ -6,12 +6,6 @@ const read  = require('./read')
 const part1 = require('./part1')
 const part2 = require('./part2')
 
-function doTest(fn, input, result) {
-    it(input + ' should be ' + result, () => {
-        assert.equal(result, fn(input))
-    })
-}
-
 describe('Day 7: Recursive Circus', () => {
     describe('Part 1', () => {
         it('bottom of the tower should be "tknk"', () => {

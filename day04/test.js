@@ -5,8 +5,8 @@ const assert = require('assert')
 const part1 = require('./part1')
 const part2 = require('./part2')
 
-function doTest(fn, input, result) {
-    it('passphrase "' + input + '" should be ' + (result ? 'valid' : 'invalid'), () => {
+const doTest = (fn, input, result) => {
+    it(`"${input}" should be ` + (result ? 'valid' : 'invalid'), () => {
         assert.equal(result, fn(input))
     })
 }

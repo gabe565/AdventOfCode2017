@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function(input) {
+module.exports = input => {
     let registers = {}
     let max = 0
     input.map(e => {

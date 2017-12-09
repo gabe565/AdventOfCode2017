@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function(memory) {
+module.exports = memory => {
     let loc = 0
     let pc = 0
 

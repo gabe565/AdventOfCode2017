@@ -4,7 +4,7 @@ const _ = require('lodash')
 
 let uneven
 
-function calcWeight(node) {
+const calcWeight = node => {
     let weight = 0
     let weights = []
     if (node.children) {
@@ -21,14 +21,14 @@ function calcWeight(node) {
     return weight
 }
 
-function getRegular([x, y, z]) {
+const getRegular = ([x, y, z]) => {
     if (x.weight.combined == y.weight.combined)
         return x.weight.combined
     else
         return z.weight.combined
 }
 
-function fixUnbalanced(node) {
+const fixUnbalanced = node => {
     if (node.children) {
         let regular = getRegular(node.children)
         let different = node.children.findIndex(e => e.weight.combined !== regular)
@@ -49,7 +49,7 @@ function fixUnbalanced(node) {
     }
 }
 
-module.exports = function(data) {
+module.exports = data => {
     let extract = data.map(e => {
         let [, name, weight, children] = e.match(/^(.+?) \((\d+?)\)(?: \-> (.*))?$/)
         if (children) children = children.split(', ')

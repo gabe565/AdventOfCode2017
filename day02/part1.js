@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-module.exports = function(data) {
+module.exports = data => {
     let differences = data.map((val, key) => {
         let max = Math.max(...val)
         let min = Math.min(...val)

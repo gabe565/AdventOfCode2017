@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function(input) {
+module.exports = input => {
     let memory  = input.replace(/\r?\n$/, '').split(/\s+/).map(Number)
     let history = new Map()
     let size = memory.length

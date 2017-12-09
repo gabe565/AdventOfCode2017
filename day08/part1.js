@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function(input) {
+module.exports = input => {
     let registers = {}
     input.map(e => {
         let [register, command, number,, cond_register, conditional, cond_number] = e.split(/\s+/)

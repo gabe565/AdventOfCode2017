@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function(loc) {
+module.exports = loc => {
     var sqrt = Math.ceil(Math.sqrt(loc))
     if (sqrt % 2 === 0) ++sqrt
     var corner = Math.pow(sqrt, 2)

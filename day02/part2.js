@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-module.exports = function(data) {
+module.exports = data => {
     let result = data.map(row => {
         let sorted = row.sort((a, b) => a - b)
         let begin = 0

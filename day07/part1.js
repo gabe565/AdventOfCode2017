@@ -2,7 +2,7 @@
 
 const _ = require('lodash')
 
-module.exports = function(data) {
+module.exports = data => {
     let extract = []
     let result = []
     data.forEach(e => {

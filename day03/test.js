@@ -5,8 +5,8 @@ const assert = require('assert')
 const part1 = require('./part1')
 //const part2 = require('./part2')
 
-function doTest(fn, input, result) {
-    it('steps to ' + input + ' should be ' + result, () => {
+const doTest = (fn, input, result) => {
+    it(`steps to ${input} should be ${result}`, () => {
         assert.equal(result, fn(input))
     })
 }
