@@ -12,7 +12,7 @@ function doTest(fn, input, result) {
     })
 }
 
-describe('Day 7: Recursive Circus', () => {
+describe('Day 8: I Heard You Like Registers', () => {
     describe('Part 1', () => {
         it('max result should be 1', () => {
             assert.equal(1, part1(read('test.txt')))
