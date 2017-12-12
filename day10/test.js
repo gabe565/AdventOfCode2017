@@ -5,7 +5,7 @@ const assert = require('assert')
 const part1 = require('./part1')
 const part2 = require('./part2')
 
-describe('Day 9: Stream Processing', () => {
+describe('Day 10: Knot Hash', () => {
     describe('Part 1', () => {
         let data = [
             [[3, 4, 1, 5], 5, 12],
