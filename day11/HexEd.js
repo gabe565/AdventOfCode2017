@@ -16,11 +16,11 @@ function read(filename) {
  **/
 function part1(input) {
     let movements = input.split(',')
-    let loc = Hex.Hex(0, 0, 0)
+    let loc = new Hex(0, 0, 0)
     movements.forEach(e => {
-        loc = Hex.move(loc, e)
+        loc.move(e)
     })
-    return Hex.distance(Hex.Hex(0, 0, 0), loc)
+    return loc.distance(new Hex(0, 0, 0))
 }
 
 /**
@@ -28,11 +28,11 @@ function part1(input) {
  **/
 function part2(input) {
     let movements = input.split(',')
-    let loc = Hex.Hex(0, 0, 0)
+    let loc = new Hex(0, 0, 0)
     let furthest = 0
     movements.forEach(e => {
-        loc = Hex.move(loc, e)
-        let distance = Hex.distance(Hex.Hex(0, 0, 0), loc)
+        loc.move(e)
+        let distance = loc.distance(new Hex(0, 0, 0))
         if (distance > furthest)
             furthest = distance
     })
