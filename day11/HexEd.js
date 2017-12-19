@@ -48,5 +48,4 @@ module.exports = {
         fromFile: input => part2(read(input)),
         fromString: part2,
     },
-    _read: read
 }

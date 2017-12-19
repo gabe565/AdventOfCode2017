@@ -47,7 +47,4 @@ function part2(filename) {
     return groups.length
 }
 
-module.exports = {
-    part1: part1,
-    part2: part2
-}
+module.exports = { part1, part2 }

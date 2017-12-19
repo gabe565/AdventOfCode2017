@@ -24,7 +24,7 @@ describe('Day 10: Knot Hash', () => {
                 ['1,2,3', [49, 44, 50, 44, 51, 17, 31, 73, 47, 23]]
             ].forEach(([input, result]) => {
                 it(`toHex should convert '${input}' into ${result}`, () => {
-                    assert.deepEqual(result, part2._toHex(input))
+                    assert.deepEqual(result, part2.toHex(input))
                 })
             })
         })

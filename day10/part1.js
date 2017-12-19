@@ -45,7 +45,6 @@ const hashString = (lengths, max, debug) => {
 }
 
 module.exports = {
-    hashString: hashString,
-    hashFile: hashFile,
-    _read: read
+    hashString,
+    hashFile
 }

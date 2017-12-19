@@ -71,8 +71,7 @@ const hashString = (input, debug) => {
 }
 
 module.exports = {
-    hashString: hashString,
-    hashFile: hashFile,
-    _read: read,
-    _toHex: toHex
+    hashString,
+    hashFile,
+    toHex
 }
